@@ -1,0 +1,11 @@
+<h2>Edit User <%= @user.username %></h2>
+
+<%= form_with model: @user do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username, maxlength: 30, placeholder: 'Some User' %><br>
+  <%= form.label :email %>
+  <%= form.email_field :email, placeholder: 'some@email.com' %><br>
+  <%= form.label :password %>
+  <%= form.password_field :password, maxlength: 50 %><br>
+  <%= form.submit %>
+<% end %>

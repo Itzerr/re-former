@@ -1,2 +1,28 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h2>Create New User <%= @user.username %></h2>
+
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.label :username %>
+    <%= form.text_field :username, maxlength: 30, placeholder: 'Some User' %>
+    <% @user.errors.full_messages_for(:username).each do |message| %>
+      <div><%= message %><div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, placeholder: 'some@email.com' %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %><div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, maxlength: 50 %>
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %><div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
